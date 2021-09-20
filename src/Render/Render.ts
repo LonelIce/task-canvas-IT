@@ -3,19 +3,19 @@ import {baseColor, intervalGluing, Mouse, selectedColor} from "../constants";
 import {isStuck} from "./isStuck";
 import {isIntersections} from "./isIntersections";
 import {ClearCanvas} from "./ClearCanvas";
+import {calculateAxisOffset} from "../Auxiliary/calculateAxisOffset";
 
-export const Rendering = (rectangles: Rectangle[], selected: Rectangle | null): void => {
+export const Rendering = (rectangles: Rectangle[], selected: Rectangle | null, initX: number, initY: number, initMouseX: number, initMouseY: number): void => {
     ClearCanvas();
     if (selected) {
-        selected.x = Mouse.x - selected.width / 2;
-        selected.y = Mouse.y - selected.height / 2;
+        selected.x = initX + calculateAxisOffset(initMouseX, Mouse.x);
+        selected.y = initY + calculateAxisOffset(initMouseY, Mouse.y);
         isStuck(rectangles, selected, intervalGluing);
         isIntersections(rectangles, selected);
         rectangles.forEach((rect: Rectangle): void => {
             if (rect !== selected) {
                 rect.stroke();
                 rect.draw(rect.color);
-
                 rect.changeColor(baseColor);
             }
         });

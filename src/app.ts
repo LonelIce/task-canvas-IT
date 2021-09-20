@@ -15,7 +15,7 @@ let selected: Rectangle | null = null;
 SetStartPosition(rectangles);
 
 setInterval(() => {
-    Rendering(rectangles, selected);
+    Rendering(rectangles, selected, initX, initY, initMouseX, initMouseY);
 }, 30);
 
 window.addEventListener('mousemove', (e) => {
@@ -23,13 +23,15 @@ window.addEventListener('mousemove', (e) => {
     Mouse.y = e.clientY;
 });
 
-let initX: number, initY: number;
+let initX: number, initY: number, initMouseX: number, initMouseY: number;
 window.addEventListener('mousedown', (): void => {
     rectangles.forEach((rect: Rectangle): void => {
         if (isCursorInRect(rect)) {
             selected = rect;
             initY = rect.y;
             initX = rect.x;
+            initMouseX = Mouse.x;
+            initMouseY = Mouse.y;
             selected.changeColor(selectedColor);
         }
     })

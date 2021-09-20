@@ -1,6 +1,7 @@
 import {Rectangle} from "../Сlasses/Rectangle";
-import {Mouse} from "../constants";
+import {canvas, Mouse} from "../constants";
+import {MarginCalculate} from "./MarginCalculate";
 
 export const isCursorInRect = (rect: Rectangle): boolean => {
-    return Mouse.x > rect.x + 15 && Mouse.x < rect.width + rect.x + 15 && Mouse.y > rect.y + 15 && Mouse.y < rect.y + rect.height + 15;
+    return Mouse.x > rect.x + MarginCalculate(canvas) && Mouse.x < rect.width + rect.x + MarginCalculate(canvas) && Mouse.y > rect.y + MarginCalculate(canvas) && Mouse.y < rect.y + rect.height + MarginCalculate(canvas);
 };

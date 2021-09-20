@@ -10,11 +10,10 @@ module.exports = {
         filename: "[name].[contenthash].js",
         assetModuleFilename: "[path][name][ext]",
         clean: true,
-
     },
     devtool: 'inline-source-map',
     devServer: {
-        static:'./dist',
+        static: './dist',
         port: 5001,
         open: true,
         hot: true
