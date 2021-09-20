@@ -1,9 +1,9 @@
-import {Rectangle} from "../classes/Rectangle";
+import {Rectangle} from "../components/Rectangle";
 import {baseColor, intervalGluing, Mouse, selectedColor} from "../constants";
 import {isStuck} from "./isStuck";
 import {isIntersections} from "./isIntersections";
 import {clearCanvas} from "./clearCanvas";
-import {calculateAxisOffset} from "../Auxiliary/calculateAxisOffset";
+import {calculateAxisOffset} from "../utils/calculateAxisOffset";
 
 export const rendering = (rectangles: Rectangle[], selected: Rectangle | null, initX: number, initY: number, initMouseX: number, initMouseY: number): void => {
     clearCanvas();

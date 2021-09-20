@@ -1,4 +1,4 @@
-import {Rectangle} from "../classes/Rectangle";
+import {Rectangle} from "../components/Rectangle";
 import {canvas, Mouse} from "../constants";
 import {calculateMargin} from "./calculateMargin";
 

@@ -1,4 +1,4 @@
-import {Rectangle} from "../classes/Rectangle";
+import {Rectangle} from "../components/Rectangle";
 import {borderWidth} from "../constants";
 
 export const setStartPosition = (rectangles: Rectangle[]): Rectangle[] => {

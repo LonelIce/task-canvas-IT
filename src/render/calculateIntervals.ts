@@ -1,4 +1,4 @@
-import {Rectangle} from "../classes/Rectangle";
+import {Rectangle} from "../components/Rectangle";
 
 export const calculateIntervals = (select: Rectangle | null, rectangles: Rectangle[]): Array<{ [key: string]: number } | undefined> => {
     let intervalLeft: number, intervalRight: number, intervalTop: number, intervalBot: number,

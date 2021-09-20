@@ -1,12 +1,12 @@
 import {baseColor, canvas, Mouse, selectedColor} from "./constants";
 import "./main.css";
-import {calculateMargin} from "./auxiliary/calculateMargin";
-import {Rectangle} from "./classes/Rectangle";
+import {calculateMargin} from "./utils/calculateMargin";
+import {Rectangle} from "./components/Rectangle";
 import {rendering} from "./render/rendering";
-import {rectangles} from "./rectangles";
-import {isCursorInRect} from "./auxiliary/isCursorInRect";
+import {rectangles} from "./components/rectangles";
+import {isCursorInRect} from "./utils/isCursorInRect";
 import {getRelocate} from "./render/relocate";
-import {setStartPosition} from "./auxiliary/setStartPosition";
+import {setStartPosition} from "./utils/setStartPosition";
 
 canvas.width = window.innerWidth - 2 * calculateMargin(canvas);
 canvas.height = window.innerHeight - 2 * calculateMargin(canvas);

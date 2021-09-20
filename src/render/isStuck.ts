@@ -1,4 +1,4 @@
-import {Rectangle} from "../classes/Rectangle";
+import {Rectangle} from "../components/Rectangle";
 import {calculateIntervals} from "./calculateIntervals";
 import {borderWidth} from "../constants";
 import {relocateToggle} from "./relocate";
