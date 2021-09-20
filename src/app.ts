@@ -1,21 +1,21 @@
 import {baseColor, canvas, Mouse, selectedColor} from "./constants";
 import "./main.css";
-import {MarginCalculate} from "./Auxiliary/MarginCalculate";
-import {Rectangle} from "./Сlasses/Rectangle";
-import {Rendering} from "./Render/Render";
-import {rectangles} from "./Rectangles";
-import {isCursorInRect} from "./Auxiliary/isCursorInRect";
-import {GetRelocate} from "./Render/Relocate";
-import {SetStartPosition} from "./Auxiliary/SetStartPosition";
+import {calculateMargin} from "./auxiliary/calculateMargin";
+import {Rectangle} from "./classes/Rectangle";
+import {rendering} from "./render/rendering";
+import {rectangles} from "./rectangles";
+import {isCursorInRect} from "./auxiliary/isCursorInRect";
+import {getRelocate} from "./render/relocate";
+import {setStartPosition} from "./auxiliary/setStartPosition";
 
-canvas.width = window.innerWidth - 2 * MarginCalculate(canvas);
-canvas.height = window.innerHeight - 2 * MarginCalculate(canvas);
+canvas.width = window.innerWidth - 2 * calculateMargin(canvas);
+canvas.height = window.innerHeight - 2 * calculateMargin(canvas);
 
 let selected: Rectangle | null = null;
-SetStartPosition(rectangles);
+setStartPosition(rectangles);
 
 setInterval(() => {
-    Rendering(rectangles, selected, initX, initY, initMouseX, initMouseY);
+    rendering(rectangles, selected, initX, initY, initMouseX, initMouseY);
 }, 30);
 
 window.addEventListener('mousemove', (e) => {
@@ -40,7 +40,7 @@ window.addEventListener('mousedown', (): void => {
 window.addEventListener('mouseup', (): void => {
     rectangles.forEach((rect: Rectangle): void => {
         if (rect === selected) {
-            if (!GetRelocate()) {
+            if (!getRelocate()) {
                 rect.x = initX;
                 rect.y = initY;
             }

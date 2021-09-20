@@ -1,7 +1,7 @@
-import {Rectangle} from "../Сlasses/Rectangle";
-import {calculateIntervals} from "./CalculateIntervals";
+import {Rectangle} from "../classes/Rectangle";
+import {calculateIntervals} from "./calculateIntervals";
 import {errorColor} from "../constants";
-import {RelocateToggle} from "./Relocate";
+import {relocateToggle} from "./relocate";
 
 export const isIntersections = (rectangles: Rectangle[], select: Rectangle): void => {
     let intervals: Array<{ [key: string]: number } | undefined> = calculateIntervals(select, rectangles);
@@ -10,7 +10,7 @@ export const isIntersections = (rectangles: Rectangle[], select: Rectangle): voi
             if (intervals[index].left < 0 && intervals[index].bot < 0 && intervals[index].top < 0 && intervals[index].right < 0) {
                 rect.changeColor(errorColor);
                 select.changeColor(errorColor);
-                RelocateToggle(false);
+                relocateToggle(false);
             }
         }
     });

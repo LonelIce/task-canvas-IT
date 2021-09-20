@@ -8,7 +8,7 @@ Drag and drop is implemented with native html5 drag and drop api with @drag, @dr
 Libraries like Vue.draggable were not used as i had to write most of the drag and drop logic according to the solitaire game type and I also had to MOVE the stack of cards.  
 Ghost image in drag is removed instead the whole stack of card moves with cursor change.  
 
-1.Rectangles are created in the code(Rectangles.ts). A separate class has been created for them (Classes/Rectangle.ts).  
+1.Rectangles are created in the code(rectangles.ts). A separate class has been created for them (Classes/Rectangle.ts).  
 2.There is a canvas in HTML. It has the dimensions of the screen with margins on the edges.  
 3.At the first launch, the application displays the created rectangles in a list, one below the other, at a small distance from each other.  
 4.The user can move the rectangles on the canvas using the drag & drop mechanism.  
