@@ -12,13 +12,14 @@ export const rendering = (rectangles: Rectangle[], selected: Rectangle | null, i
         selected.y = initY + calculateAxisOffset(initMouseY, Mouse.y);
         isStuck(rectangles, selected, intervalGluing);
         isIntersections(rectangles, selected);
+
         rectangles.forEach((rect: Rectangle): void => {
-            if (rect !== selected) {
-                rect.stroke();
-                rect.draw(rect.color);
-                rect.changeColor(baseColor);
-            }
+            if (rect === selected) return
+            rect.stroke();
+            rect.draw(rect.color);
+            rect.changeColor(baseColor);
         });
+
         selected.stroke();
         selected.draw(selected.color);
         selected.changeColor(selectedColor);
