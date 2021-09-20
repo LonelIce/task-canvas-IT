@@ -1,4 +1,4 @@
-import {baseColor, borderWidth, ctx} from "../constants";
+import { baseColor, ctx } from "../constants";
 
 export class Rectangle {
     width: number;
@@ -10,14 +10,14 @@ export class Rectangle {
     constructor(width: number, height: number) {
         this.width = width;
         this.height = height;
-        this.x = 5;
-        this.y = 5;
+        this.x = 20;
+        this.y = 20;
         this.color = baseColor;
     }
 
-    stroke(): void {
+    stroke(borderWidth: number): void {
         ctx.lineWidth = borderWidth;
-        ctx.strokeRect(this.x, this.y, this.width, this.height);
+        ctx.strokeRect(this.x - borderWidth / 2, this.y - borderWidth / 2, this.width + borderWidth, this.height + borderWidth);
     }
 
     draw(color: string): void {

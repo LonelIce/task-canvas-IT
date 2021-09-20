@@ -1,5 +1,5 @@
-import {Rectangle} from "../components/Rectangle";
-import {borderWidth} from "../constants";
+import { Rectangle } from "../components/Rectangle";
+import { borderWidth } from "../constants";
 
 export const setStartPosition = (rectangles: Rectangle[]): Rectangle[] => {
     for (let i = 1; i < rectangles.length; i++)

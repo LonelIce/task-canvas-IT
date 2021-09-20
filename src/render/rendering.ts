@@ -1,32 +1,34 @@
-import {Rectangle} from "../components/Rectangle";
-import {baseColor, intervalGluing, Mouse, selectedColor} from "../constants";
-import {isStuck} from "./isStuck";
-import {isIntersections} from "./isIntersections";
-import {clearCanvas} from "./clearCanvas";
-import {calculateAxisOffset} from "../utils/calculateAxisOffset";
+import { Rectangle } from "../components/Rectangle";
+import { baseColor, borderWidth, intervalGluing, Mouse, selectedColor } from "../constants";
+import { isStuck } from "./isStuck";
+import { isIntersections } from "./isIntersections";
+import { clearCanvas } from "./clearCanvas";
+import { calculateAxisOffset } from "../utils/calculateAxisOffset";
+import { calculateIntervals } from "./calculateIntervals";
 
-export const rendering = (rectangles: Rectangle[], selected: Rectangle | null, initX: number, initY: number, initMouseX: number, initMouseY: number): void => {
+export const rendering = (rectangles: Rectangle[], selected: Rectangle | null, initX: number = 0, initY: number = 0, initMouseX: number = 0, initMouseY: number = 0): void => {
     clearCanvas();
     if (selected) {
         selected.x = initX + calculateAxisOffset(initMouseX, Mouse.x);
         selected.y = initY + calculateAxisOffset(initMouseY, Mouse.y);
-        isStuck(rectangles, selected, intervalGluing);
-        isIntersections(rectangles, selected);
+        const intervals = calculateIntervals(selected, rectangles);
 
-        rectangles.forEach((rect: Rectangle): void => {
+        rectangles.forEach((rect: Rectangle, index: number): void => {
             if (rect === selected) return
-            rect.stroke();
+
+            isStuck(rect, selected, intervalGluing, intervals, index);
+            isIntersections(rect, selected, intervals, index);
             rect.draw(rect.color);
+            rect.stroke(borderWidth);
             rect.changeColor(baseColor);
         });
-
-        selected.stroke();
         selected.draw(selected.color);
+        selected.stroke(borderWidth);
         selected.changeColor(selectedColor);
     } else {
         rectangles.forEach((rect: Rectangle): void => {
-            rect.stroke();
             rect.draw(rect.color);
+            rect.stroke(borderWidth);
         });
     }
 };
